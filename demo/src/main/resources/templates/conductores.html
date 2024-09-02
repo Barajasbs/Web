@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" type="text/css" href="/demo/src/main/resources/static/styles_conductores.css">
+
+<head>
+    <title>Conductores</title>
+</head>
+<body>
+    <h1>Lista de Conductores</h1>
+    <a th:href="@{/conductores/add}">Agregar Conductor</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Cédula</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="conductor : ${conductores}">
+                <td th:text="${conductor.nombre}"></td>
+                <td th:text="${conductor.cedula}"></td>
+                <td th:text="${conductor.telefono}"></td>
+                <td th:text="${conductor.direccion}"></td>
+                <td>
+                    <a th:href="@{/conductores/edit/{id}(id=${conductor.id})}">Editar</a>
+                    <a th:href="@{/conductores/delete/{id}(id=${conductor.id})}">Eliminar</a>
+                    <a th:href="@{/conductores/details/{id}(id=${conductor.id})}">Detalles</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <link rel="stylesheet" type="text/css" href="/demo/src/main/resources/static/styles_conductor-form.css">
+
+<head>
+    <title>Formulario de Conductor</title>
+</head>
+<body>
+    <h1>Formulario de Conductor</h1>
+    <form th:action="@{${conductor.id != null} ? '/conductores/edit/' + ${conductor.id} : '/conductores/add'}" th:object="${conductor}"method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <label>Nombre:</label>
+        <input type="text" th:field="*{nombre}" /><br/>
+        <label>Cédula:</label>
+        <input type="text" th:field="*{cedula}" /><br/>
+        <label>Teléfono:</label>
+        <input type="text" th:field="*{telefono}" /><br/>
+        <label>Dirección:</label>
+        <input type="text" th:field="*{direccion}" /><br/>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

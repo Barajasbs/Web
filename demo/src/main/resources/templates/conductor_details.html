@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+    <title>Detalles del Conductor</title>
+    <link rel="stylesheet" type="text/css" href="/demo/src/main/resources/static/styles_details.css">
+</head>
+<body>
+    <h1>Detalles del Conductor</h1>
+    <p><strong>Nombre:</strong> <span th:text="${conductor.nombre}"></span></p>
+    <p><strong>Cédula:</strong> <span th:text="${conductor.cedula}"></span></p>
+    <p><strong>Teléfono:</strong> <span th:text="${conductor.telefono}"></span></p>
+    <p><strong>Dirección:</strong> <span th:text="${conductor.direccion}"></span></p>
+    <p><strong>Buses Asignados:</strong></p>
+    <ul>
+        <li th:each="bus : ${conductor.buses}">
+            <span th:text="${bus.placa}"></span> - <span th:text="${bus.modelo}"></span>
+        </li>
+    </ul>
+    <a th:href="@{/conductores}">Volver a la lista</a>
+</body>
+</html>

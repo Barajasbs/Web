@@ -1,0 +1,51 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9; /* Fondo claro */
+  }
+  
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    max-width: 500px; /* Ancho máximo del formulario */
+    margin: 40px auto; /* Centrar el formulario */
+    padding: 20px; /* Espacio entre el formulario y el borde */
+    background-color: #fff; /* Fondo blanco */
+    border: 1px solid #ddd; /* Borde gris claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  }
+  
+  label {
+    display: block; /* Mostrar etiquetas como bloques */
+    margin-bottom: 10px; /* Espacio entre etiquetas */
+  }
+  
+  input[type="text"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio entre el texto y el borde */
+    margin-bottom: 20px; /* Espacio entre inputs */
+    border: 1px solid #ccc; /* Borde gris claro */
+  }
+  
+  input[type="text"]:focus {
+    border-color: #337ab7; /* Borde azul claro al enfocar */
+  }
+  
+  button[type="submit"] {
+    background-color: #337ab7; /* Fondo azul claro */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espacio entre el texto y el borde */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de mano */
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #23527c; /* Fondo azul oscuro al pasar el mouse */
+  }
