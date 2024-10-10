@@ -1,0 +1,14 @@
+<div *ngIf="conductor">
+    <h2>Detalles del Conductor</h2>
+    <p><strong>Nombre:</strong> {{ conductor.nombre }}</p>
+    <p><strong>Cédula:</strong> {{ conductor.cedula }}</p>
+    <p><strong>Teléfono:</strong> {{ conductor.telefono }}</p>
+    <p><strong>Dirección:</strong> {{ conductor.direccion }}</p>
+    <h3>Buses Asignados:</h3>
+    <ul>
+      <li *ngFor="let bus of conductor.buses">
+        {{ bus.placa }} - {{ bus.modelo }}
+      </li>
+    </ul>
+    <a routerLink="/conductores">Volver a la lista</a>
+  </div>
