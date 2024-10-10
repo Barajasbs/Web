@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="/transporte-frontend/src/app/conductor-list/conductor-list.component.css">
+<h2 class="conductor-header">Lista de Conductores</h2>
+<a routerLink="/add">Agregar Conductor</a>
+ 
+<div class="conductor-list">
+<div class="conductor-card" *ngFor="let conductor of conductores">
+<div class="conductor-header">{{ conductor.nombre }}</div>
+<div class="conductor-info">
+<p><strong>Cédula:</strong> {{ conductor.cedula }}</p>
+<p><strong>Teléfono:</strong> {{ conductor.telefono }}</p>
+<p><strong>Dirección:</strong> {{ conductor.direccion }}</p>
+</div>
+<div class="conductor-actions">
+<a [routerLink]="['/edit', conductor.id]" class="conductor-edit">Editar</a>
+<a [routerLink]="['/details', conductor.id]" class="conductor-details">Detalles</a>
+<button (click)="deleteConductor(conductor.id)">Eliminar</button>
+</div>
+</div>
+</div>

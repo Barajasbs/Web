@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/transporte-frontend/src/app/conductor-detail/conductor-detail.component.css">
+ 
+<div *ngIf="conductor" class="conductor-detail">
+<h2>Detalles del Conductor</h2>
+<div class="conductor-info">
+<div>
+<h3>Nombre</h3>
+<p>{{ conductor.nombre }}</p>
+</div>
+<div>
+<h3>Cédula</h3>
+<p>{{ conductor.cedula }}</p>
+</div>
+</div>
+<div class="conductor-info">
+<div>
+<h3>Teléfono</h3>
+<p>{{ conductor.telefono }}</p>
+</div>
+<div>
+<h3>Dirección</h3>
+<p>{{ conductor.direccion }}</p>
+</div>
+</div>
+<div class="conductor-actions">
+<button routerLink="/conductores">Volver a la lista</button>
+</div>
+</div>
