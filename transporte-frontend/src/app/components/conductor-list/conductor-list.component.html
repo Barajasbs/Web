@@ -1,0 +1,15 @@
+<!-- Ubicación: src/app/components/conductor-list/conductor-list.component.html -->
+
+<h2>Lista de Conductores</h2>
+<button (click)="goToAddConductor()">Agregar Conductor</button>
+
+<div class="conductor-list">
+  <div *ngFor="let conductor of conductores" class="conductor-card">
+    <h3>{{ conductor.nombre }}</h3>
+    <p><strong>Cédula:</strong> {{ conductor.cedula }}</p>
+    <p><strong>Teléfono:</strong> {{ conductor.telefono }}</p>
+    <p><strong>Dirección:</strong> {{ conductor.direccion }}</p>
+    <button (click)="deleteConductor(conductor.id)">Eliminar</button>
+    <button [routerLink]="['/conductores/edit', conductor.id]">Editar</button>
+  </div>
+</div>
