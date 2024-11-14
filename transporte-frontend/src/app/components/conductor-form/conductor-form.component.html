@@ -1,0 +1,34 @@
+<!-- Ubicación: src/app/components/conductor-form/conductor-form.component.html -->
+
+<h2>{{ isEditMode ? 'Editar' : 'Crear' }} Conductor</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" [(ngModel)]="conductor.nombre" name="nombre" required>
+
+  <label for="cedula">Cédula:</label>
+  <input type="text" id="cedula" [(ngModel)]="conductor.cedula" name="cedula" required>
+
+  <label for="telefono">Teléfono:</label>
+  <input type="text" id="telefono" [(ngModel)]="conductor.telefono" name="telefono" required>
+
+  <label for="direccion">Dirección:</label>
+  <input type="text" id="direccion" [(ngModel)]="conductor.direccion" name="direccion" required>
+
+  <h3>Asignar Bus</h3>
+  <label for="bus">Seleccionar Bus:</label>
+  <select id="bus" [(ngModel)]="selectedBusId" name="bus">
+    <option *ngFor="let bus of buses" [value]="bus.id">{{ bus.placa }} - {{ bus.modelo }}</option>
+  </select>
+
+  <label for="dias">Días de Asignación:</label>
+  <div *ngFor="let day of daysOfWeek">
+    <input type="checkbox" [value]="day" [(ngModel)]="selectedDays" name="dias">{{ day }}
+  </div>
+
+  <button type="button" (click)="addBusAssignment()">Asignar Bus</button>
+
+  <button type="submit">{{ isEditMode ? 'Guardar Cambios' : 'Crear Conductor' }}</button>
+  <a routerLink="/conductores">Cancelar</a>
+</form>
+

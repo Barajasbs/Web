@@ -1,0 +1,17 @@
+<!-- Ubicación: src/app/components/ruta-form/ruta-form.component.html -->
+
+<h2>{{ isEditMode ? 'Editar' : 'Crear' }} Ruta</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="codigo">Código:</label>
+  <input type="text" id="codigo" [(ngModel)]="ruta.codigo" name="codigo" required>
+
+  <label for="estaciones">Estaciones (separadas por comas):</label>
+  <input type="text" id="estaciones" [(ngModel)]="ruta.estaciones" name="estaciones" required>
+
+  <label for="horario">Horario:</label>
+  <input type="text" id="horario" [(ngModel)]="ruta.horario" name="horario" required>
+
+  <button type="submit">{{ isEditMode ? 'Guardar Cambios' : 'Crear Ruta' }}</button>
+  <a routerLink="/rutas">Cancelar</a>
+</form>
