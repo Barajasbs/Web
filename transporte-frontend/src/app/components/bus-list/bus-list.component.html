@@ -1,0 +1,13 @@
+<!-- Ubicación: src/app/components/bus-list/bus-list.component.html -->
+
+<h2>Lista de Buses</h2>
+<button (click)="goToAddBus()">Agregar Bus</button>
+
+<div class="bus-list">
+  <div *ngFor="let bus of buses" class="bus-card">
+    <h3>{{ bus.placa }}</h3>
+    <p><strong>Modelo:</strong> {{ bus.modelo }}</p>
+    <button (click)="deleteBus(bus.id)">Eliminar</button>
+    <button [routerLink]="['/buses/edit', bus.id]">Editar</button>
+  </div>
+</div>

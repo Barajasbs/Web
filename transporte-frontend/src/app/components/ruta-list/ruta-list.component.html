@@ -1,0 +1,14 @@
+<!-- Ubicación: src/app/components/ruta-list/ruta-list.component.html -->
+
+<h2>Lista de Rutas</h2>
+<button (click)="goToAddRuta()">Agregar Ruta</button>
+
+<div class="ruta-list">
+  <div *ngFor="let ruta of rutas" class="ruta-card">
+    <h3>{{ ruta.codigo }}</h3>
+    <p><strong>Estaciones:</strong> {{ ruta.estaciones.join(', ') }}</p>
+    <p><strong>Horario:</strong> {{ ruta.horario }}</p>
+    <button (click)="deleteRuta(ruta.id)">Eliminar</button>
+    <button [routerLink]="['/rutas/edit', ruta.id]">Editar</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<!-- Ubicación: src/app/components/bus-form/bus-form.component.html -->
+
+<h2>{{ isEditMode ? 'Editar' : 'Crear' }} Bus</h2>
+
+<form (ngSubmit)="onSubmit()">
+  <label for="placa">Placa:</label>
+  <input type="text" id="placa" [(ngModel)]="bus.placa" name="placa" required>
+
+  <label for="modelo">Modelo:</label>
+  <input type="text" id="modelo" [(ngModel)]="bus.modelo" name="modelo" required>
+
+  <h3>Asignar Ruta</h3>
+  <label for="ruta">Seleccionar Ruta:</label>
+  <select id="ruta" [(ngModel)]="selectedRutaId" name="ruta">
+    <option *ngFor="let ruta of rutas" [value]="ruta.id">{{ ruta.codigo }} - {{ ruta.horario }}</option>
+  </select>
+
+  <label for="dias">Días de Asignación:</label>
+  <div *ngFor="let day of daysOfWeek">
+    <input type="checkbox" [value]="day" [(ngModel)]="selectedDays" name="dias">{{ day }}
+  </div>
+
+  <button type="button" (click)="addRutaAssignment()">Asignar Ruta</button>
+
+  <button type="submit">{{ isEditMode ? 'Guardar Cambios' : 'Crear Bus' }}</button>
+  <a routerLink="/buses">Cancelar</a>
+</form>
