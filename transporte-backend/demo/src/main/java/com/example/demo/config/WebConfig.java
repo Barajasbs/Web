@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import jakarta.servlet.Filter;
 
 @Configuration
@@ -17,7 +18,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
-     @Bean
+
+    @Bean
     public Filter authFilter() {
         return new AuthFilter();
     }
@@ -27,4 +29,3 @@ public class WebConfig implements WebMvcConfigurer {
         return new AuthorizationFilter();
     }
 }
-

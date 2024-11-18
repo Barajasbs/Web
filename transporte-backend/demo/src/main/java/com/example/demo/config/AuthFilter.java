@@ -1,26 +1,33 @@
-// Ubicación: src/main/java/com/example/demo/config/AuthFilter.java
 package com.example.demo.config;
 
-import jakarta.servlet.*;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 
+@Component
 public class AuthFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest) request;
-        HttpSession session = req.getSession(false);  // Revisa si ya existe una sesión activa
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-        if (session == null || session.getAttribute("userRole") == null) {
-            // Si no existe sesión o el rol no está presente, devuelve error 401
-            ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Usuario no autenticado");
-        } else {
-            // Si la sesión es válida, permite que la solicitud continúe
-            chain.doFilter(request, response);
+        String authHeader = httpRequest.getHeader("Authorization");
+
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // Retorna 401
+            return;
         }
+
+        // Si la autenticación es válida, continúa con la solicitud
+        chain.doFilter(request, response);
     }
+    
 }
