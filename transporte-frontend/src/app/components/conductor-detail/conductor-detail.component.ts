@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { ConductorService } from '../../conductor.service';
+import { ConductorService } from '../../services/conductor.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

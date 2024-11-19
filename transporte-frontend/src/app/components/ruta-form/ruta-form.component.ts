@@ -1,12 +1,16 @@
 // Ubicación: src/app/components/ruta-form/ruta-form.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RutaService } from '../../services/ruta.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ruta-form',
   templateUrl: './ruta-form.component.html',
-  styleUrls: ['./ruta-form.component.css']
+  styleUrls: ['./ruta-form.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule, FormsModule],
 })
 export class RutaFormComponent implements OnInit {
   ruta: any = { codigo: '', estaciones: '', horario: '' };

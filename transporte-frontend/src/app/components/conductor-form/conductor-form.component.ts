@@ -1,13 +1,18 @@
 // Ubicación: src/app/components/conductor-form/conductor-form.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ConductorService } from '../../services/conductor.service';
+import { FormsModule } from '@angular/forms';
 import { BusService } from '../../services/bus.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-conductor-form',
   templateUrl: './conductor-form.component.html',
-  styleUrls: ['./conductor-form.component.css']
+  styleUrls: ['./conductor-form.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule, FormsModule],
 })
 export class ConductorFormComponent implements OnInit {
   conductor: any = { nombre: '', cedula: '', telefono: '', direccion: '', buses: [] };

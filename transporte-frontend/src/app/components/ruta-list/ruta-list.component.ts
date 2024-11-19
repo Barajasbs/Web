@@ -1,12 +1,16 @@
 // Ubicación: src/app/components/ruta-list/ruta-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { RutaService } from '../../services/ruta.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-ruta-list',
   templateUrl: './ruta-list.component.html',
-  styleUrls: ['./ruta-list.component.css']
+  styleUrls: ['./ruta-list.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule, FormsModule],
 })
 export class RutaListComponent implements OnInit {
   rutas: any[] = [];

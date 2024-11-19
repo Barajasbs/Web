@@ -2,12 +2,16 @@
 import { Component, OnInit } from '@angular/core';
 import { BusService } from '../../services/bus.service';
 import { RutaService } from '../../services/ruta.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-bus-form',
   templateUrl: './bus-form.component.html',
-  styleUrls: ['./bus-form.component.css']
+  styleUrls: ['./bus-form.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule, FormsModule],
 })
 export class BusFormComponent implements OnInit {
   bus: any = { placa: '', modelo: '', rutas: [] };

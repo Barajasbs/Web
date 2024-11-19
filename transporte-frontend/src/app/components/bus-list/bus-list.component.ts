@@ -1,12 +1,16 @@
 // Ubicación: src/app/components/bus-list/bus-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { BusService } from '../../services/bus.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-bus-list',
   templateUrl: './bus-list.component.html',
-  styleUrls: ['./bus-list.component.css']
+  styleUrls: ['./bus-list.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule,FormsModule]
 })
 export class BusListComponent implements OnInit {
   buses: any[] = [];

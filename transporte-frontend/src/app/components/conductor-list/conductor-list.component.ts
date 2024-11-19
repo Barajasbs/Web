@@ -1,12 +1,16 @@
 // Ubicación: src/app/components/conductor-list/conductor-list.component.ts
 import { Component, OnInit } from '@angular/core';
 import { ConductorService } from '../../services/conductor.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-conductor-list',
   templateUrl: './conductor-list.component.html',
-  styleUrls: ['./conductor-list.component.css']
+  styleUrls: ['./conductor-list.component.css'],
+  standalone:true, 
+  imports: [CommonModule,RouterModule, FormsModule],
 })
 export class ConductorListComponent implements OnInit {
   conductores: any[] = [];
