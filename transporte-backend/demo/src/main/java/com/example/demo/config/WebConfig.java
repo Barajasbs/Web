@@ -19,11 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(true);
     }
 
-    @Bean
-    public Filter authFilter() {
-        return new AuthFilter();
-    }
-
+  
     @Bean
     public Filter authorizationFilter() {
         return new AuthorizationFilter();

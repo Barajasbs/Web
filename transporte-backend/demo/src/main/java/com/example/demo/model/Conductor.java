@@ -1,51 +1,39 @@
 package com.example.demo.model;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import jakarta.persistence.GenerationType;
-
-
 
 @Entity
 public class Conductor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String cedula;
     private String telefono;
     private String direccion;
 
+    // Relación ManyToMany para los buses asignados
     @ManyToMany
     @JoinTable(
         name = "conductor_bus",
         joinColumns = @JoinColumn(name = "conductor_id"),
         inverseJoinColumns = @JoinColumn(name = "bus_id")
-
     )
-
-    @ElementCollection
-    private Map<Long, List<String>> diasAsignacionBus = new HashMap<>(); // Map para guardar busID y días asignados
-    
     private List<Bus> buses = new ArrayList<>();
 
-    public Map<Long, List<String>> getDiasAsignacionBus() {
-        return diasAsignacionBus;
-    }
+    // Relación con días asignados a buses
+    @ElementCollection
+    @CollectionTable(name = "dias_asignacion_bus", joinColumns = @JoinColumn(name = "conductor_id"))
+    @MapKeyColumn(name = "bus_id")
+    @Column(name = "dia_asignado")
+    private Map<Long, String> diasAsignacionBus = new HashMap<>();
 
-    public void setDiasAsignacionBus(Map<Long, List<String>> diasAsignacionBus) {
-        this.diasAsignacionBus = diasAsignacionBus;
-    }
-    
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -93,7 +81,12 @@ public class Conductor {
     public void setBuses(List<Bus> buses) {
         this.buses = buses;
     }
-    
 
-    // Getters y Setters
+    public Map<Long, String> getDiasAsignacionBus() {
+        return diasAsignacionBus;
+    }
+
+    public void setDiasAsignacionBus(Map<Long, String> diasAsignacionBus) {
+        this.diasAsignacionBus = diasAsignacionBus;
+    }
 }

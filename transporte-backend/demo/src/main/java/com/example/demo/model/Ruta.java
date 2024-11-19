@@ -14,9 +14,11 @@ public class Ruta {
     private String codigo;
 
     @ElementCollection
+    @CollectionTable(name = "ruta_estaciones", joinColumns = @JoinColumn(name = "ruta_id"))
+    @Column(name = "estacion")
     private List<String> estaciones;
 
-    private String horario;  // Formato sugerido: "Lunes-Viernes: 6:00-22:00, Sábado: 8:00-20:00"
+    private String horario;  
 
     // Constructor vacío requerido por JPA
     public Ruta() {}

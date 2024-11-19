@@ -42,8 +42,10 @@ public class ConductorService {
     public Conductor asignarBus(Long conductorId, Long busId, List<String> dias) {
         Conductor conductor = conductorRepository.findById(conductorId)
                 .orElseThrow(() -> new RuntimeException("Conductor no encontrado"));
-
-        conductor.getDiasAsignacionBus().put(busId, dias); // Asigna el bus y los días al conductor
+    
+        String diasConcatenados = String.join(",", dias); // Convierte la lista de días en una cadena
+        conductor.getDiasAsignacionBus().put(busId, diasConcatenados); // Asigna el bus y los días al conductor
         return conductorRepository.save(conductor);
     }
+    
 }
